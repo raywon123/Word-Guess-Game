@@ -69,7 +69,7 @@ let alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 let answers = answer.split("");
-let answers_tmp = answer.split("");
+let answers_copy = answer.split("");
 
 
 
@@ -84,8 +84,8 @@ console.log(alphaList);
 console.log(answers);
 console.log(guesses);
 console.log(printouts);
-console.log(answers_tmp);
-console.log("duplicate  " + findDuplicateElement(answers_tmp, 'L'));
+console.log(answers_copy);
+console.log("duplicate  " + findDuplicateElement(answers_copy, 'L'));
 
 console.log(" You have " + answer.length + " letters to guess.");
 
@@ -104,13 +104,13 @@ for (let i = 0; i < guesses.length; i++) {
         // dealing with duplicates in answers array
         for (let j = 0; j < count; j++) {
             //console.log("right guess j " + j);
-            printouts[answers_tmp.indexOf(guesses[i])] = guesses[i];
+            printouts[answers_copy.indexOf(guesses[i])] = guesses[i];
             removeElement(answers, guesses[i]);
         }
 
         // dealing with duplicate letters for printouts array
         if (count > 1) {
-            let index = findDuplicateElement(answers_tmp, guesses[i]);
+            let index = findDuplicateElement(answers_copy, guesses[i]);
             for (let j = 1; j < count; j++) {
                 //   console.log("inside index "  + index[j] );  
                 printouts[index[j]] = guesses[i];
