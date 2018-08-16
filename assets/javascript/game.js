@@ -20,6 +20,20 @@ function countElement(array, element) {
     return counts[element];
 }
 
+// This function finds index of duplicate elements in an array
+function findDuplicateElement(array, element) {
+    let duplicates = {};
+    for (var i = 0; i < array.length; i++) {
+        if (duplicates.hasOwnProperty(array[i])) {
+            duplicates[array[i]].push(i);
+        }
+        else if (array.lastIndexOf(array[i]) !== i) {
+            duplicates[array[i]] = [i];
+        }
+    }
+    return duplicates[element];
+}
+
 //-- user input test
 
 let guesses = ['A', 'B', 'C', 'C'];
@@ -37,15 +51,18 @@ let alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
 let answers = answer.split("");
 let answers_tmp = answer.split("");
 
-let printout=[];
-for (i = 0; i < answers.length ; i++) {
-    printout.push('_');
+let printouts = [];
+for (i = 0; i < answers.length; i++) {
+    printouts.push('_');
 }
+
 
 console.log(alphaList);
 console.log(answers);
 console.log(guesses);
-console.log(printout);
+console.log(printouts);
+console.log(answers_tmp);
+console.log("duplicate  " + findDuplicateElement(answers_tmp, 'L'));
 
 console.log(" You have " + answer.length + " letters to guess.");
 
@@ -60,11 +77,23 @@ for (let i = 0; i < guesses.length; i++) {
         // console.log("right guess " + guesses[i]);
         // console.log("count " + countElement(answers, guesses[i]));
         let count = countElement(answers, guesses[i]);
+        // dealing with duplicates in answers array
         for (let j = 0; j < count; j++) {
-            // console.log("right guess j " + j);
-            printout[answers_tmp.indexOf(guesses[i])] = guesses[i];
+            //console.log("right guess j " + j);
+            printouts[answers_tmp.indexOf(guesses[i])] = guesses[i];
             removeElement(answers, guesses[i]);
         }
+
+        // dealing with duplicate letters for printouts array
+        if (count > 1) {
+            let index = findDuplicateElement(answers_tmp, guesses[i]) ;
+            for (let j = 1; j < count; j++) {
+            //   console.log("inside index "  + index[j] );  
+              printouts[index[j]] = guesses[i];
+            }
+
+        
+        }  
     }
     else {
         console.log("wrong guess " + guesses[i]);
@@ -77,7 +106,7 @@ for (let i = 0; i < guesses.length; i++) {
     }
 
     console.log("Letters Left [ " + alphaList + " ]");
-    console.log("Your Guess: [ " + printout + " ]");
+    console.log("Your Guess: [ " + printouts + " ]");
 
 
 }
