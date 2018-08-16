@@ -36,11 +36,31 @@ function findDuplicateElement(array, element) {
 
 //-- user input test
 
-let guesses = ['A', 'B', 'C', 'C'];
-let answer = 'OSCAR';
+// let guesses = ['A', 'B', 'C', 'C'];
+// let answer = 'O';
+
+// let guesses = ['A', 'B', 'C', 'C'];
+// let answer = 'OSCAR';
 
 // let guesses = ['W', 'L', 'M', 'A', 'E', 'X'];
 // let answer = 'MAXWELL';
+
+// -- odd squad agent list
+
+let agents_input = ['O', 'Otis', 'Olympia', 'Otto', 'Oona', 'Orchild', 'Owen',
+    'Odonahue', 'Olaf', 'Obfusco', 'Ohlm', 'Olly', 'Octavia', 'Oren',
+    'Ocean', 'Orson', 'Olo', 'Odie', 'Olsen', 'Ori', 'OBeth', 'Orielle', 'Omaha',
+    'Orzac', 'Odell', 'Orbot', 'Oda', 'Odalis', 'OReily', 'OHara', 'OGuire', 'OLeary',
+    'Odelette'];
+
+let agents = [];
+for (i = 0; i < agents_input.length; i++) {
+    agents[i] = agents_input[i].toUpperCase();
+}
+
+// random generator
+let guesses = ['W', 'O', 'L', 'M', 'A', 'E', 'X'];
+let answer = agents[Math.floor(Math.random() * agents.length)];
 
 //---- don't change below
 
@@ -51,10 +71,13 @@ let alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
 let answers = answer.split("");
 let answers_tmp = answer.split("");
 
+
+
 let printouts = [];
 for (i = 0; i < answers.length; i++) {
     printouts.push('_');
 }
+
 
 
 console.log(alphaList);
@@ -65,6 +88,7 @@ console.log(answers_tmp);
 console.log("duplicate  " + findDuplicateElement(answers_tmp, 'L'));
 
 console.log(" You have " + answer.length + " letters to guess.");
+
 
 // console.log("use function:" + countElement(answers, 'A'));
 
@@ -86,14 +110,14 @@ for (let i = 0; i < guesses.length; i++) {
 
         // dealing with duplicate letters for printouts array
         if (count > 1) {
-            let index = findDuplicateElement(answers_tmp, guesses[i]) ;
+            let index = findDuplicateElement(answers_tmp, guesses[i]);
             for (let j = 1; j < count; j++) {
-            //   console.log("inside index "  + index[j] );  
-              printouts[index[j]] = guesses[i];
+                //   console.log("inside index "  + index[j] );  
+                printouts[index[j]] = guesses[i];
             }
 
-        
-        }  
+
+        }
     }
     else {
         console.log("wrong guess " + guesses[i]);
