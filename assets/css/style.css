@@ -71,6 +71,7 @@
   } 
 
   .banner {
+    width: 90%;
     background-color: #ccc;
     color: #4aaa57;
     text-align: center;
