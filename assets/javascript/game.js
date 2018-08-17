@@ -34,6 +34,46 @@ function findDuplicateElement(array, element) {
     return duplicates[element];
 }
 
+// Function that updates the question...
+function renderQuestion() {
+    document.querySelector("#question").innerHTML = ans_printouts;
+}
+
+// Function that updates the score...
+function updateScore() {
+    document.querySelector("#score").innerHTML = "Score: " + score;
+}
+
+// Function that updates the try count...
+function updateTrialCount() {
+    document.querySelector("#trialCount").innerHTML = "You Have Tried: " + trialCount + " Times.";
+}
+
+// Function that updates the alphabet list...
+function updateLettersAll() {
+    document.querySelector("#lettersAll").innerHTML = "Letters Left: " + alphaList;
+}
+
+// Function that updates the guess list...
+function updateLettersTried() {
+    document.querySelector("#lettersTried").innerHTML = "Letters Tried: " + guesses;
+}
+
+// Function that updates the banner...
+function updateBanner() {
+    if (answers.length > 0) {
+        document.querySelector("#banner").innerHTML = "Sorry, You Lose.  "
+    }
+    else {
+        document.querySelector("#banner").innerHTML = "Congratulation, You Win !!! "
+    }
+}
+
+// Function that updates the guess list...
+function showCorrectAnswer() {
+    document.querySelector("#correctAnswer").innerHTML = "Correct Answer:  " + answers_copy.join('');
+}
+
 //-- user input test
 
 // let guesses = ['A', 'B', 'C', 'C'];
@@ -78,7 +118,7 @@ for (i = 0; i < answers.length; i++) {
 }
 
 let trialCount = 0;
-
+let score = 100;
 
 console.log(alphaList);
 console.log(answers);
@@ -91,6 +131,13 @@ console.log(" You have " + answer.length + " letters to guess.");
 
 
 // console.log("use function:" + countElement(answers, 'A'));
+
+renderQuestion();
+updateBanner();
+updateScore();
+updateTrialCount();
+updateLettersTried();
+updateLettersAll();
 
 
 
@@ -137,6 +184,12 @@ for (let i = 0; i < guesses.length; i++) {
 
 
 }
+
+
+renderQuestion();
+updateLettersTried();
+updateLettersAll();
+showCorrectAnswer();
 
 if (answers.length > 0) {
     console.log("****** You Lose");

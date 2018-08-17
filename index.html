@@ -16,18 +16,43 @@
     <title>Odd Squad Guessing Game</title>
 </head>
 
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 logobox">
+                <img src="assets/images/oddsquad.png" class="auth-image img-fluid" alt="Odd Squad">
+            </div>
+        </div>
+    </div>
+</header>
+
 <body>
     <h1></h1>
 
     <div class="wrapper">
 
         <section class="main-content">
-            <img src="assets/images/oddsquad.png" class="auth-image img-fluid" alt="Odd Squad">
-        </section>
+            <p class="mission-text"> Your Mission: The Odd Squad agent database has been hacked by the evil President Obbs.
+                It is currently been shutdown. To recover access, you have to correctly guess the active agent name below.
+                Good luck and and Godspeed.
+            </p>
+            <button type="button" class="btn btn-success">Start</button>
 
-        <section class="sidebar">
-            <p> Your Mission: Guess Who the Agent Is. </p>
-        </section>
+            <p>Instruction: Press a to z on your keyboard to guess.</p>
+
+
+            <section class="container">
+                  
+                <h2 id="question"> </h2>
+                <h3 id="banner"></h3>
+                <p id="correctAnswer"></p>
+                <p id="trialCount"></p>
+                <p id="score"></p>
+                <p id="lettersTried"></p>
+                <p id="lettersAll"></p>
+               
+
+            </section>
     </div>
 
     <!-- Optional JavaScript -->
