@@ -1,10 +1,10 @@
 # Odd Squad Hangman Game
 -----------------------------------------
 
-####[Odd Squad Hangman Game](
+[Odd Squad Hangman Game](
 https://raywon123.github.io/Word-Guess-Game/)
 
-####[My Portfolio Page](
+[My Portfolio Page](
 https://raywon123.github.io/)
 
 #### How It Works:
