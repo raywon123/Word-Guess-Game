@@ -41,22 +41,22 @@ function renderQuestion() {
 
 // Function that updates the score...
 function updateScore() {
-    document.querySelector("#score").innerHTML = "Score: " + score;
+    document.querySelector("#score").innerHTML = "Wins:   " + score;
 }
 
 // Function that updates the try count...
 function updateTrialCount() {
-    document.querySelector("#trialCount").innerHTML = "You Have Tried: " + trialCount + " Times.";
+    document.querySelector("#trialCount").innerHTML = "Number of Guesses Remaining:   " + trialCount ;
 }
 
 // Function that updates the alphabet list...
 function updateLettersAll() {
-    document.querySelector("#lettersAll").innerHTML = "Letters Left: " + alphaList;
+    document.querySelector("#lettersAll").innerHTML = "Letters Left:   " + alphaList;
 }
 
 // Function that updates the guess list...
 function updateLettersTried() {
-    document.querySelector("#lettersTried").innerHTML = "Letters Tried: " + guesses;
+    document.querySelector("#lettersTried").innerHTML = "Letters Already Guessed:   " + guesses;
 }
 
 // Function that updates the banner...
@@ -93,7 +93,7 @@ function showCorrectAnswer() {
 let guesses = [];
 // -- odd squad agent list - The Answer List
 
-let agents_input = ['O', 'Otis', 'Olympia', 'Otto', 'Oona', 'Orchild', 'Owen',
+let agents_input = ['Otis', 'Olympia', 'Otto', 'Oona', 'Orchild', 'Owen',
     'Odonahue', 'Olaf', 'Obfusco', 'Ohlm', 'Olly', 'Octavia', 'Oren',
     'Ocean', 'Orson', 'Olo', 'Odie', 'Olsen', 'Ori', 'OBeth', 'Orielle', 'Omaha',
     'Orzac', 'Odell', 'Orbot', 'Oda', 'Odalis', 'OReily', 'OHara', 'OGuire', 'OLeary',
