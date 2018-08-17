@@ -36,42 +36,42 @@ function findDuplicateElement(array, element) {
 
 // Function that updates the question...
 function renderQuestion() {
-    document.querySelector("#question").innerHTML = ans_printouts;
+    document.querySelector(".question").innerHTML = ans_printouts;
 }
 
 // Function that updates the score...
 function updateScore() {
-    document.querySelector("#score").innerHTML = "Wins:   " + score;
+    document.querySelector(".score").innerHTML = "Wins:   " + score;
 }
 
 // Function that updates the try count...
 function updateTrialCount() {
-    document.querySelector("#trialCount").innerHTML = "Number of Guesses Remaining:   " + trialCount ;
+    document.querySelector(".trialCount").innerHTML = "Number of Guesses Remaining:   " + trialCount ;
 }
 
 // Function that updates the alphabet list...
 function updateLettersAll() {
-    document.querySelector("#lettersAll").innerHTML = "Letters Left:   " + alphaList;
+    document.querySelector(".lettersAll").innerHTML = "Letters Left:   " + alphaList;
 }
 
 // Function that updates the guess list...
 function updateLettersTried() {
-    document.querySelector("#lettersTried").innerHTML = "Letters Already Guessed:   " + guesses;
+    document.querySelector(".lettersTried").innerHTML = "Letters Already Guessed:   " + guesses;
 }
 
 // Function that updates the banner...
 function updateBanner() {
     if (answers.length > 0) {
-        document.querySelector("#banner").innerHTML = "Keep Trying.  "
+        document.querySelector(".banner").innerHTML = "Keep Trying.  "
     }
     else {
-        document.querySelector("#banner").innerHTML = "Congratulation, You Win !!! "
+        document.querySelector(".banner").innerHTML = "Congratulation, You Win !!! "
     }
 }
 
 // Function that updates the guess list...
 function showCorrectAnswer() {
-    document.querySelector("#correctAnswer").innerHTML = "Correct Answer:  " + answers_copy.join('');
+    document.querySelector(".correctAnswer").innerHTML = "Correct Answer:  " + answers_copy.join('');
 }
 
 //-- user input-answer paiar testing
