@@ -62,7 +62,7 @@ function updateLettersTried() {
 // Function that updates the banner...
 function updateBanner() {
     if (answers.length > 0) {
-        document.querySelector("#banner").innerHTML = "Sorry, You Lose.  "
+        document.querySelector("#banner").innerHTML = "Keep Trying.  "
     }
     else {
         document.querySelector("#banner").innerHTML = "Congratulation, You Win !!! "
@@ -74,7 +74,7 @@ function showCorrectAnswer() {
     document.querySelector("#correctAnswer").innerHTML = "Correct Answer:  " + answers_copy.join('');
 }
 
-//-- user input test
+//-- user input-answer paiar testing
 
 // let guesses = ['A', 'B', 'C', 'C'];
 // let answer = 'O';
@@ -85,7 +85,13 @@ function showCorrectAnswer() {
 // let guesses = ['W', 'L', 'M', 'A', 'E', 'X'];
 // let answer = 'MAXWELL';
 
-// -- odd squad agent list
+
+// -- testing input-answer pair with random generator
+
+//let guesses = ['W', 'O', 'L', 'M', 'A', 'E', 'X'];
+
+let guesses = [];
+// -- odd squad agent list - The Answer List
 
 let agents_input = ['O', 'Otis', 'Olympia', 'Otto', 'Oona', 'Orchild', 'Owen',
     'Odonahue', 'Olaf', 'Obfusco', 'Ohlm', 'Olly', 'Octavia', 'Oren',
@@ -98,11 +104,12 @@ for (i = 0; i < agents_input.length; i++) {
     agents[i] = agents_input[i].toUpperCase();
 }
 
-// random generator
-let guesses = ['W', 'O', 'L', 'M', 'A', 'E', 'X'];
-let answer = agents[Math.floor(Math.random() * agents.length)];
+
 
 //---- don't change below
+
+// random generator
+let answer = agents[Math.floor(Math.random() * agents.length)];
 
 let alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
     'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
@@ -133,49 +140,53 @@ console.log(" You have " + answer.length + " letters to guess.");
 // console.log("use function:" + countElement(answers, 'A'));
 
 renderQuestion();
-updateBanner();
+//updateBanner();
 updateScore();
 updateTrialCount();
 updateLettersTried();
 updateLettersAll();
 
+// -- adding event listener
+document.onkeyup = function (event) {
+    let userInput = event.key.toUpperCase();
+    console.log("user input is " + userInput);
 
-
-// alogorithm
-for (let i = 0; i < guesses.length; i++) {
-    console.log("guessing " + guesses[i]);
+    // -- alogorithm
+    //for (let i = 0; i < guesses.length; i++) {
+    guesses.push(userInput);
+    console.log("guessing " + userInput);
     trialCount += 1;
-    if (answers.includes(guesses[i])) {
+    if (answers.includes(userInput)) {
         // console.log("right guess " + guesses[i]);
         // console.log("count " + countElement(answers, guesses[i]));
-        let count = countElement(answers, guesses[i]);
+        let count = countElement(answers, userInput);
         // dealing with duplicates in answers array
         for (let j = 0; j < count; j++) {
             //console.log("right guess j " + j);
-            ans_printouts[answers_copy.indexOf(guesses[i])] = guesses[i];
-            removeElement(answers, guesses[i]);
+            ans_printouts[answers_copy.indexOf(userInput)] = userInput;
+            removeElement(answers, userInput);
         }
 
         // dealing with duplicate letters for printouts array
         if (count > 1) {
-            let index = findDuplicateElement(answers_copy, guesses[i]);
+            let index = findDuplicateElement(answers_copy, userInput);
             for (let j = 1; j < count; j++) {
                 //   console.log("inside index "  + index[j] );  
-                ans_printouts[index[j]] = guesses[i];
+                ans_printouts[index[j]] = userInput;
             }
 
 
         }
     }
     else {
-        console.log("wrong guess " + guesses[i]);
+        console.log("wrong guess " + userInput);
     }
-    if (alphaList.includes(guesses[i])) {
+    if (alphaList.includes(userInput)) {
         // removeElement(alphaList, guesses[i]);
-        alphaList[alphaList.indexOf(guesses[i])] = '_';
+        alphaList[alphaList.indexOf(userInput)] = '_';
     }
     else {
-        console.log("you already guess " + guesses[i] + ". Please choose a different letter. ");
+        console.log("you already guess " + userInput + ". Please choose a different letter. ");
     }
 
     console.log("You have tried " + trialCount + " times so far.");
@@ -183,27 +194,30 @@ for (let i = 0; i < guesses.length; i++) {
     console.log("Your Guess: [ " + ans_printouts + " ]");
 
 
-}
+    //}
 
 
-renderQuestion();
-updateLettersTried();
-updateLettersAll();
-showCorrectAnswer();
+    renderQuestion();
+    updateBanner();
+    updateLettersTried();
+    updateLettersAll();
+    showCorrectAnswer();
+  
 
-if (answers.length > 0) {
-    console.log("****** You Lose");
-    console.log("Your Guess: [ " + ans_printouts + " ]");
-    console.log("Missing letters: " + answers);
-    console.log("Correct Answer: " + answer);
-    console.log("You have tried [ " + guesses + " ]");
-    console.log("Letters Left [ " + alphaList + " ]");
-    console.log("You have tried total " + trialCount + " times.");
-}
-else {
-    console.log("****** You Win");
-    console.log("You Guess the Correct Answer: " + answer);
-    console.log("You have tried [ " + guesses + " ]");
-    console.log("Letters Left [ " + alphaList + " ]");
-    console.log("You have tried total " + trialCount + " times.");
+    if (answers.length > 0) {
+        console.log("****** Keep Trying");
+        console.log("Your Guess: [ " + ans_printouts + " ]");
+        console.log("Missing letters: " + answers);
+        console.log("Correct Answer: " + answer);
+        console.log("You have tried [ " + guesses + " ]");
+        console.log("Letters Left [ " + alphaList + " ]");
+        console.log("You have tried total " + trialCount + " times.");
+    }
+    else {
+        console.log("****** You Win");
+        console.log("You Guess the Correct Answer: " + answer);
+        console.log("You have tried [ " + guesses + " ]");
+        console.log("Letters Left [ " + alphaList + " ]");
+        console.log("You have tried total " + trialCount + " times.");
+    }
 }
