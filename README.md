@@ -2,10 +2,10 @@
 -----------------------------------------
 
 [Odd Squad Hangman Game](
-https://raywon123.github.io/Word-Guess-Game/)
+https://raywon123.github.io/Word-Guess-Game/ )
 
 [My Portfolio Page](
-https://raywon123.github.io/)
+https://raywon123.github.io/portfolio.html )
 
 #### How It Works:
 * Like a hangman game, user will press any key from a to z to guess what the word would be. User will have 15 tries to guess the correct word.
