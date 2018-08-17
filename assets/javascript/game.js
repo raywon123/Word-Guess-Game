@@ -72,18 +72,18 @@ let answers = answer.split("");
 let answers_copy = answer.split("");
 
 
-
-let printouts = [];
+let ans_printouts = [];
 for (i = 0; i < answers.length; i++) {
-    printouts.push('_');
+    ans_printouts.push('_');
 }
 
+let trialCount = 0;
 
 
 console.log(alphaList);
 console.log(answers);
 console.log(guesses);
-console.log(printouts);
+console.log(ans_printouts);
 console.log(answers_copy);
 console.log("duplicate  " + findDuplicateElement(answers_copy, 'L'));
 
@@ -97,6 +97,7 @@ console.log(" You have " + answer.length + " letters to guess.");
 // alogorithm
 for (let i = 0; i < guesses.length; i++) {
     console.log("guessing " + guesses[i]);
+    trialCount += 1;
     if (answers.includes(guesses[i])) {
         // console.log("right guess " + guesses[i]);
         // console.log("count " + countElement(answers, guesses[i]));
@@ -104,7 +105,7 @@ for (let i = 0; i < guesses.length; i++) {
         // dealing with duplicates in answers array
         for (let j = 0; j < count; j++) {
             //console.log("right guess j " + j);
-            printouts[answers_copy.indexOf(guesses[i])] = guesses[i];
+            ans_printouts[answers_copy.indexOf(guesses[i])] = guesses[i];
             removeElement(answers, guesses[i]);
         }
 
@@ -113,7 +114,7 @@ for (let i = 0; i < guesses.length; i++) {
             let index = findDuplicateElement(answers_copy, guesses[i]);
             for (let j = 1; j < count; j++) {
                 //   console.log("inside index "  + index[j] );  
-                printouts[index[j]] = guesses[i];
+                ans_printouts[index[j]] = guesses[i];
             }
 
 
@@ -123,24 +124,33 @@ for (let i = 0; i < guesses.length; i++) {
         console.log("wrong guess " + guesses[i]);
     }
     if (alphaList.includes(guesses[i])) {
-        removeElement(alphaList, guesses[i]);
+        // removeElement(alphaList, guesses[i]);
+        alphaList[alphaList.indexOf(guesses[i])] = '_';
     }
     else {
         console.log("you already guess " + guesses[i] + ". Please choose a different letter. ");
     }
 
+    console.log("You have tried " + trialCount + " times so far.");
     console.log("Letters Left [ " + alphaList + " ]");
-    console.log("Your Guess: [ " + printouts + " ]");
+    console.log("Your Guess: [ " + ans_printouts + " ]");
 
 
 }
 
 if (answers.length > 0) {
     console.log("****** You Lose");
+    console.log("Your Guess: [ " + ans_printouts + " ]");
     console.log("Missing letters: " + answers);
     console.log("Correct Answer: " + answer);
+    console.log("You have tried [ " + guesses + " ]");
+    console.log("Letters Left [ " + alphaList + " ]");
+    console.log("You have tried total " + trialCount + " times.");
 }
 else {
     console.log("****** You Win");
     console.log("You Guess the Correct Answer: " + answer);
+    console.log("You have tried [ " + guesses + " ]");
+    console.log("Letters Left [ " + alphaList + " ]");
+    console.log("You have tried total " + trialCount + " times.");
 }
