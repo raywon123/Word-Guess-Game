@@ -41,7 +41,7 @@ function renderQuestion() {
 
 // Function that updates the score...
 function updateScore() {
-    document.querySelector(".score").innerHTML = "Wins:   " + score;
+    document.querySelector(".score").innerHTML = "Wins:  " + score + "  ... Loses:    " + lose;
 }
 
 // Function that updates the try count...
@@ -62,10 +62,13 @@ function updateLettersTried() {
 // Function that updates the banner...
 function updateBanner() {
     if (answers.length > 0) {
-        document.querySelector(".banner").innerHTML = "Keep Trying.  "
+        document.querySelector(".banner").innerHTML = "Keep Trying."
     }
     else {
-        document.querySelector(".banner").innerHTML = "Congratulation, You Win !!! "
+        document.querySelector(".banner").innerHTML = "<span class=\"win\">Congratulations! You Won !!!</span>"
+    }
+    if (answers.length > 0 && trialCount === 0) {
+        document.querySelector(".banner").innerHTML = "<span class=\"lose\">Sorry, You Lose.<\span>"
     }
 }
 
@@ -120,6 +123,7 @@ let alphaList_copy = ['A', 'B', 'C', 'D', 'E', 'F',
 
 let trialCount = 16;
 let score = 0;
+let lose = 0;
 let ans_printouts = [];
 let answer = '';
 let answers = [];
@@ -227,7 +231,7 @@ document.onkeyup = function (event) {
     updateTrialCount();
     updateLettersTried();
     updateLettersAll();
-    showCorrectAnswer();
+    //showCorrectAnswer();
 
 
     if (answers.length > 0) {
@@ -259,5 +263,26 @@ document.onkeyup = function (event) {
         console.log("after guess [ " + guesses + " ]");
     }
 
+    if (answers.length > 0 && trialCount === 0) {
+        console.log("****** Sorry, You Lose. ");
+        console.log("Your Guess: [ " + ans_printouts + " ]");
+        console.log("Missing letters: " + answers);
+        console.log("Correct Answer: " + answer);
+        console.log("You have tried [ " + guesses + " ]");
+        console.log("Letters Left [ " + alphaList + " ]");
+        lose += 1;
+        trialCount = 16;
+        alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
+            'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+            'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        alphaList_copy = ['A', 'B', 'C', 'D', 'E', 'F',
+            'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+            'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        guesses = [];
+        ans_printouts = [];
+        answers_copy = [];
+        console.log("afer Letters Left [ " + alphaList + " ]");
+        console.log("after guess [ " + guesses + " ]");
+    }
 
 }

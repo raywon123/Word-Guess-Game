@@ -1,28 +1,27 @@
  * {
-    box-sizing: border-box;
-  }
-  
+   box-sizing: border-box;
+ }
 
-  body {
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    font-size: 18px;
-    line-height: 25px;
-    color: #ccc;
-    background: url("../images/greenlightning.jpg");
-    
-  }
-  
-  h1, h2, h3 {
-    font-family: Georgia, Times, "Times New Roman", serif;
-    font-weight: 700;
-    color: #4aaa57;
-  }
-  /*
+ body {
+   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+   font-size: 18px;
+   line-height: 25px;
+   color: #ccc;
+   background: url("../images/greenlightning.jpg");
+ }
+
+ h1, h2, h3 {
+   font-family: Georgia, Times, "Times New Roman", serif;
+   font-weight: 700;
+   color: #4aaa57;
+ }
+
+ /*
     The width of the wrapper will be 1024px
     at browser widths above 768px
   */
-  
-  /* .wrapper {
+
+ /* .wrapper {
     width: 1024px;
     margin: 40px auto;
   }
@@ -44,40 +43,59 @@
 
   */
 
-  .container {
-    width: 90%;
-    margin-right: 10px;
+ .container {
+   width: 90%;
+   margin-right: 10px;
+ }
 
-  }
+ .logobox {
+   width: auto;
+   height: 150px;
+   padding-left: 30px;
+   padding-right: 30px;
+ }
 
-  .logobox {
-    width: auto;
-    height: 150px;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-  .auth-image {
-    float: left; 
-    width: 90%;
-    height: 90%;
-    margin-top: 10px;
-  }
-  
-  .mission-text {
-    width: 90%;
-    font-size: 18px;
-    line-height: 25px;
-    background-color: #ccc;
-    color: #4aaa57;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 10px;
-    text-align: left;
-  } 
+ .auth-image {
+   float: left;
+   width: 90%;
+   height: 90%;
+   margin-top: 10px;
+ }
 
-  .banner {
-    width: 90%;
-    background-color: #ccc;
-    color: #4aaa57;
-    text-align: center;
-  }
+ .mission-text {
+   width: 90%;
+   font-size: 18px;
+   line-height: 25px;
+   background-color: #ccc;
+   color: #4aaa57;
+   padding: 10px;
+   padding-left: 20px;
+   padding-right: 10px;
+   text-align: left;
+ }
+
+ .banner {
+   width: 90%;
+   background-color: #ccc;
+   color: #4aaa57;
+   text-align: center;
+ }
+
+ .lose {
+   color: red;
+   animation: blinker 1s linear infinite;
+ }
+
+ .win {
+   color: lime;
+   background-color: #111;
+   padding-left: 100px;
+   padding-right: 100px;
+   animation: blinker 1s linear infinite;
+ }
+
+ @keyframes blinker {
+   50% {
+     opacity: 0;
+   }
+ }
