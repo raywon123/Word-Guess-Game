@@ -65,10 +65,10 @@ function updateBanner() {
         document.querySelector(".banner").innerHTML = "Keep Trying."
     }
     else {
-        document.querySelector(".banner").innerHTML = "<span class=\"win\">Congratulations! You Won !!!</span>"
+        document.querySelector(".banner").innerHTML = "<span class=\"win\">Congratulations! You Won!!!   Press any key to continue.</span>"
     }
     if (answers.length > 0 && trialCount === 0) {
-        document.querySelector(".banner").innerHTML = "<span class=\"lose\">Sorry, You Lose.<\span>"
+        document.querySelector(".banner").innerHTML = "<span class=\"lose\">Sorry, You Lose. Press any key to continue.<\span>"
     }
 }
 
