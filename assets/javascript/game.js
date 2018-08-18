@@ -139,7 +139,7 @@ console.log(" You have " + answer.length + " letters to guess.");
 
 // console.log("use function:" + countElement(answers, 'A'));
 
-renderQuestion();
+//renderQuestion();
 //updateBanner();
 updateScore();
 //updateTrialCount();
