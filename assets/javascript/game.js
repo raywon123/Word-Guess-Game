@@ -51,7 +51,7 @@ function updateTrialCount() {
 
 // Function that updates the alphabet list...
 function updateLettersAll() {
-    document.querySelector(".lettersAll").innerHTML = "Letters Left:   " + alphaList;
+    document.querySelector(".lettersAll").innerHTML = "Letters Remaining:   " + alphaList;
 }
 
 // Function that updates the guess list...
@@ -114,18 +114,18 @@ let answer = agents[Math.floor(Math.random() * agents.length)];
 let alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
     'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+let alphaList_copy = alphaList;
 
 let answers = answer.split("");
 let answers_copy = answer.split("");
-
 
 let ans_printouts = [];
 for (i = 0; i < answers.length; i++) {
     ans_printouts.push('_');
 }
 
-let trialCount = 0;
-let score = 100;
+let trialCount = 16;
+let score = 0;
 
 console.log(alphaList);
 console.log(answers);
@@ -142,7 +142,7 @@ console.log(" You have " + answer.length + " letters to guess.");
 renderQuestion();
 //updateBanner();
 updateScore();
-updateTrialCount();
+//updateTrialCount();
 updateLettersTried();
 updateLettersAll();
 
@@ -153,9 +153,28 @@ document.onkeyup = function (event) {
 
     // -- alogorithm
     //for (let i = 0; i < guesses.length; i++) {
-    guesses.push(userInput);
+    
+
+    // -- fixing first key press because that is for starting the game
+    if (trialCount === 16) {
+        userInput = '1' ; 
+    }
+    // -- checking non-alphabet input
+    if (trialCount < 16) {
+        if (alphaList_copy.includes(userInput)) {
+            guesses.push(userInput);
+        }
+        else {
+            userInput = '1' ; 
+            trialCount += 1;
+            alert("You either choose a letter that is already been chosen or press an invalid key.");
+        }
+        
+    }
+
+
     console.log("guessing " + userInput);
-    trialCount += 1;
+    trialCount -= 1;
     if (answers.includes(userInput)) {
         // console.log("right guess " + guesses[i]);
         // console.log("count " + countElement(answers, guesses[i]));
@@ -189,7 +208,7 @@ document.onkeyup = function (event) {
         console.log("you already guess " + userInput + ". Please choose a different letter. ");
     }
 
-    console.log("You have tried " + trialCount + " times so far.");
+    console.log("You have tried " + trialCount);
     console.log("Letters Left [ " + alphaList + " ]");
     console.log("Your Guess: [ " + ans_printouts + " ]");
 
@@ -199,6 +218,7 @@ document.onkeyup = function (event) {
 
     renderQuestion();
     updateBanner();
+    updateTrialCount();
     updateLettersTried();
     updateLettersAll();
     showCorrectAnswer();
@@ -211,13 +231,13 @@ document.onkeyup = function (event) {
         console.log("Correct Answer: " + answer);
         console.log("You have tried [ " + guesses + " ]");
         console.log("Letters Left [ " + alphaList + " ]");
-        console.log("You have tried total " + trialCount + " times.");
+        
     }
     else {
         console.log("****** You Win");
         console.log("You Guess the Correct Answer: " + answer);
         console.log("You have tried [ " + guesses + " ]");
         console.log("Letters Left [ " + alphaList + " ]");
-        console.log("You have tried total " + trialCount + " times.");
+       
     }
 }

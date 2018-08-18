@@ -44,6 +44,12 @@
 
   */
 
+  .container {
+    width: 90%;
+    margin-right: 10px;
+
+  }
+
   .logobox {
     width: auto;
     height: 150px;
@@ -51,11 +57,10 @@
     padding-right: 30px;
   }
   .auth-image {
-    float: left;
+    float: left; 
     width: 90%;
     height: 90%;
     margin-top: 10px;
-    margin-right: 25px;
   }
   
   .mission-text {
