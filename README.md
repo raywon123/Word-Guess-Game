@@ -19,6 +19,6 @@ https://raywon123.github.io/portfolio.html )
 
 #### What Needs To Be Done:
 * This project is done with time constrain. I only have about 15 hours to finish from scratch. The coding is a little sloppy. Next step would be:
-** Refactor code: I encounter some test cases failed after I already done most of my code. So the final product seems not well thought out.
-** Scoping problem: I encouter some scoping problems for some of variables I am not sure how to access properly. I ended up put a lot of them as "global".
-** Need to figure out the unit test part.
+  * Refactor code: I encounter some test cases failed after I already done most of my code. So the final product seems not well thought out.
+  * Scoping problem: I encouter some scoping problems for some of variables I am not sure how to access properly. I ended up put a lot of them as "global".
+  * Need to figure out the unit test part.
