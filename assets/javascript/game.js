@@ -112,7 +112,7 @@ for (i = 0; i < agents_input.length; i++) {
 let alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
     'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-    
+
 let alphaList_copy = ['A', 'B', 'C', 'D', 'E', 'F',
     'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -173,7 +173,7 @@ document.onkeyup = function (event) {
 
     // -- checking non-alphabet input
     if (trialCount < 16) {
-        if (alphaList_copy.includes(userInput)) {
+        if (alphaList.includes(userInput)) {
             guesses.push(userInput);
         }
         else {
