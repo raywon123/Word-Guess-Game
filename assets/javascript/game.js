@@ -46,7 +46,7 @@ function updateScore() {
 
 // Function that updates the try count...
 function updateTrialCount() {
-    document.querySelector(".trialCount").innerHTML = "Number of Guesses Remaining:   " + trialCount ;
+    document.querySelector(".trialCount").innerHTML = "Number of Guesses Remaining:   " + trialCount;
 }
 
 // Function that updates the alphabet list...
@@ -108,68 +108,79 @@ for (i = 0; i < agents_input.length; i++) {
 
 //---- don't change below
 
-// random generator
-let answer = agents[Math.floor(Math.random() * agents.length)];
 
 let alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
     'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
     'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-let alphaList_copy = alphaList;
+    
+let alphaList_copy = ['A', 'B', 'C', 'D', 'E', 'F',
+    'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+    'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
-let answers = answer.split("");
-let answers_copy = answer.split("");
-
-let ans_printouts = [];
-for (i = 0; i < answers.length; i++) {
-    ans_printouts.push('_');
-}
 
 let trialCount = 16;
 let score = 0;
-
-console.log(alphaList);
-console.log(answers);
-console.log(guesses);
-console.log(ans_printouts);
-console.log(answers_copy);
-console.log("duplicate  " + findDuplicateElement(answers_copy, 'L'));
-
-console.log(" You have " + answer.length + " letters to guess.");
+let ans_printouts = [];
+let answer = '';
+let answers = [];
+let answers_copy = [];
 
 
 // console.log("use function:" + countElement(answers, 'A'));
 
-//renderQuestion();
-//updateBanner();
-updateScore();
-//updateTrialCount();
-updateLettersTried();
-updateLettersAll();
 
 // -- adding event listener
 document.onkeyup = function (event) {
+
+
     let userInput = event.key.toUpperCase();
     console.log("user input is " + userInput);
+    console.log("trialCount = " + trialCount);
 
-    // -- alogorithm
-    //for (let i = 0; i < guesses.length; i++) {
-    
-
-    // -- fixing first key press because that is for starting the game
+    // -- beginning of the game
+    // --   fixing first key press because that is for starting the game
+    // --   start the random generator
     if (trialCount === 16) {
-        userInput = '1' ; 
+        userInput = '1';
+        // random generator
+        answer = agents[Math.floor(Math.random() * agents.length)];
+        answers = answer.split("");
+        answers_copy = answer.split("");
+
+
+        for (let i = 0; i < answers.length; i++) {
+            ans_printouts.push('_');
+        }
+
     }
+
+    //renderQuestion();
+    //updateBanner();
+    updateScore();
+    //updateTrialCount();
+    updateLettersTried();
+    updateLettersAll();
+
+    console.log(alphaList);
+    console.log(answers);
+    console.log(guesses);
+    console.log(ans_printouts);
+    console.log(answers_copy);
+    // console.log("duplicate  " + findDuplicateElement(answers_copy, 'L'));
+    console.log(" You have " + answer.length + " letters to guess.");
+
+    // guesses.push(userInput);
+
     // -- checking non-alphabet input
     if (trialCount < 16) {
         if (alphaList_copy.includes(userInput)) {
             guesses.push(userInput);
         }
         else {
-            userInput = '1' ; 
+            userInput = '1';
             trialCount += 1;
             alert("You either choose a letter that is already been chosen or press an invalid key.");
         }
-        
     }
 
 
@@ -193,8 +204,6 @@ document.onkeyup = function (event) {
                 //   console.log("inside index "  + index[j] );  
                 ans_printouts[index[j]] = userInput;
             }
-
-
         }
     }
     else {
@@ -213,16 +222,13 @@ document.onkeyup = function (event) {
     console.log("Your Guess: [ " + ans_printouts + " ]");
 
 
-    //}
-
-
     renderQuestion();
     updateBanner();
     updateTrialCount();
     updateLettersTried();
     updateLettersAll();
     showCorrectAnswer();
-  
+
 
     if (answers.length > 0) {
         console.log("****** Keep Trying");
@@ -231,13 +237,27 @@ document.onkeyup = function (event) {
         console.log("Correct Answer: " + answer);
         console.log("You have tried [ " + guesses + " ]");
         console.log("Letters Left [ " + alphaList + " ]");
-        
+
     }
     else {
         console.log("****** You Win");
         console.log("You Guess the Correct Answer: " + answer);
         console.log("You have tried [ " + guesses + " ]");
         console.log("Letters Left [ " + alphaList + " ]");
-       
+        score += 1;
+        trialCount = 16;
+        alphaList = ['A', 'B', 'C', 'D', 'E', 'F',
+            'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+            'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        alphaList_copy = ['A', 'B', 'C', 'D', 'E', 'F',
+            'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+            'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+        guesses = [];
+        ans_printouts = [];
+        answers_copy = [];
+        console.log("afer Letters Left [ " + alphaList + " ]");
+        console.log("after guess [ " + guesses + " ]");
     }
+
+
 }
