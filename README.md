@@ -24,3 +24,4 @@ https://raywon123.github.io/portfolio.html )
   * Explore the unit test part.
   * When I showed off to friends on a mobile device and I found out that I need a button for event listener since there is no key to press to start the game.
   * I need to adjust the logo picture on mobile.
+  * To make it more fun, I should put some sound and the character picture when user guesses the word correctly.
